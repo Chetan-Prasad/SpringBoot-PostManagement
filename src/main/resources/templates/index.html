@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Spring Post Management Homepage</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed"
+                    data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+                    aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span> <span
+                    class="icon-bar"></span> <span class="icon-bar"></span> <span
+                    class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#" th:href="@{/}">SpringBoot Post Management</a>
+        </div>
+    </div>
+</nav>
+<br><br>
+<div class="container">
+    <h1>Welcome to SpringBoot based Post Management!</h1>
+    <br>
+    <h2>All the links available in this project!</h2>
+    <br>
+    <button class="btn btn-primary" th:onclick="|window.location.href='/register'|">Register to Static User List</button>
+    <br><br>
+    <button class="btn btn-primary" th:onclick="|window.location.href='/jpa/register'|">Register to In-Memory H2 DB</button>
+    <br><br>
+    <button class="btn btn-primary" th:onclick="|window.location.href='/users'|">View Static Users List</button>
+    <br><br>
+    <button class="btn btn-primary" th:onclick="|window.location.href='/jpa/users'|">View In-Memory H2 DB List</button>
+</div>
+</body>
+</html>

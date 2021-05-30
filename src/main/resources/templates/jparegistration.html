@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Create User</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed"
+              data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+              aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span> <span
+              class="icon-bar"></span> <span class="icon-bar"></span> <span
+              class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#" th:href="@{/}">SpringBoot Post Management</a>
+    </div>
+  </div>
+</nav>
+<br><br>
+<div class="container">
+  <div th:if="${param.success}">
+    <div class="alert alert-info">You've successfully registered
+      to our awesome app!</div>
+  </div>
+  <h2>Register new user!</h2>
+  <br><br>
+  <form th:action="@{/jpa/users}" th:object="${user}" method="post">
+    <div class="form-group">
+      <label for="name" class="control-label">Name:</label>
+      <input id="name" class="form-control" th:field="*{name}" />
+    </div>
+    <div class="form-group">
+      <label for="birthdate" class="control-label">Date of Birth:</label>
+      <input id="birthdate"  class="form-control" type="date" th:field="*{date}" />
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-success">Create</button>
+    </div>
+  </form>
+</div>
+</body>
+</html>

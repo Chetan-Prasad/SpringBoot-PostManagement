@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed"
+                    data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+                    aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span> <span
+                    class="icon-bar"></span> <span class="icon-bar"></span> <span
+                    class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#" th:href="@{/}">SpringBoot Post Management</a>
+        </div>
+    </div>
+</nav>
+<br><br>
+<div class="container">
+    <br><br>
+    <div th:if="${param.success}">
+        <div class="alert alert-info">Post upload successful!</div>
+    </div>
+    <h2 th:text="${user.name}"></h2>
+    <strong><p>Date of Birth:</p></strong><p th:text="${user.birthDate}"></p>
+    <br>
+    <button type="button" class="btn btn-primary collapsible">Create Post</button>
+    <div class="content" style="display: none">
+        <form th:action="@{/jpa/users/{path}/posts(path=${user.id})}" th:object="${post}" method="post">
+            <div class="form-group">
+                <label for="name" class="control-label">Enter your post:</label>
+                <input type="text" id="name" class="form-control" th:field="*{description}" />
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-success">Post</button>
+            </div>
+        </form>
+    </div>
+    <button class="btn btn-secondary" id="disappear" th:onclick="|window.location.href='/jpa/users/${user.id}/posts'|">View All Posts</button>
+</div>
+<script>
+    var coll = document.getElementsByClassName("collapsible");
+    var dis = document.getElementById("disappear");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.display === "block") {
+                content.style.display = "none";
+            } else {
+                content.style.display = "block";
+                dis.style.display = "none";
+            }
+        });
+    }
+</script>
+</body>
+</html>
